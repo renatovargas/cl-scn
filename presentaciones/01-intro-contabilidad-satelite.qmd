@@ -1,29 +1,53 @@
 ---
 title: "Introducción a la Contabilidad Satélite de Bioeconomía"
 author: "Renato Vargas"
-format: revealjs
+format: 
+  revealjs:
+    theme: serif
+    footer: "Introducción a la Contabilidad Satélite de Bioeconomía."
 ---
 
 # Definiciones
 
-## Definición de Bioecnomía
+## Definición de Bioeconomía {.smaller}
 
-:::: {.columns}
-
-::: {.column width="40%"}
-contents...
+:::::: columns
+::: {.column width="30%"}
+![](images/paste-1.png)
 :::
 
-::: {.column width="60%"}
-“La producción, utilización, conservación y regeneración de recursos biológicos, incluyendo los conocimientos, la ciencia, la tecnología y la innovación relacionados con dichos recursos, para proporcionar información, productos, procesos y servicios a todos los sectores económicos, con el propósito de avanzar hacia una economía sostenible.” 
+:::: {.column width="70%"}
+“La producción, utilización, conservación y regeneración de recursos biológicos, incluyendo los conocimientos, la ciencia, la tecnología y la innovación relacionados con dichos recursos, para proporcionar información, productos, procesos y servicios a todos los sectores económicos, con el propósito de avanzar hacia una economía sostenible.”
 
-(Gobierno de Costa Rica, 2020;
- German Bioeconomy Council, 2018)
-
+::: {style="text-align: right"}
+---Gobierno de Costa Rica, 2020; <br> German Bioeconomy Council, 2018
 :::
+::::
+::::::
 
+## ¿Qué debe entenderse por bioeconomía? {.smaller}
+
+::::::: columns
+:::: {.column width="50%"}
+::: incremental
+-   Biomasa que se cultiva para producir alimentos, forrajes, fibras y energía.
+-   Biomasa de los recursos marinos y acuicultura.
+-   Biomasa forestal.
+-   Biomasa residual en los sectores agropecuario, pesca y acuacultura, forestal y agroindustrial.
+:::
 ::::
 
+:::: {.column width="50%"}
+::: incremental
+-   Biomasa que se puede recuperar de los desechos urbanos.
+-   Desechos líquidos de la ganadería y de la actividad humana.
+-   Biodiversidad terrestre y marina, incluyendo la biodiversidad de aguas continentales.
+:::
+::::
+:::::::
 
+## {background-image="images/paste-2.png" }
 
-
+::: {style="color: white"}
+¿Satélite de qué?
+:::
