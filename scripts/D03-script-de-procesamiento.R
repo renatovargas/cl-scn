@@ -1,8 +1,12 @@
 # Script de procesamiento COU
+# Renato Vargas
+
 # Librerías
-library(readxl)    # Extraer datos del Excel
-library(tidyverse) # Manipular datos
-library(openxlsx)  # Exportar a Excel
+library(readxl) # Importar datos de Excel
+library(dplyr) # Manipulación de datos
+library(tidyr) # Limpieza de datos
+library(stringr) # Manipulación de textos
+library(openxlsx) # Exportación a Excel
 
 # Limpiar el área de trabajo
 rm(list = ls())
@@ -11,23 +15,113 @@ rm(list = ls())
 archivo <- "datos/cou/COU_2022_PRECIOSCORRIENTES_111x181.xlsx"
 
 # Hojas del Excel
-hojas <- excel_sheets(archivo)
+hoja_todas <- excel_sheets(archivo)
 
-# Hojas de interés:
+# hoja de interés:
 # Matriz de producción (of)
-# Oferta total (of)
-# Utilización intermedia (ut)
+# Oferta total (ot)
+# Utilización intermedia (ui)
 # Utilización total (ut)
 # Valor Agregado (va)
 
-pes <- c("1", "2", "5", "6")
+cuadrante <- c(
+  "mp",
+  "ot",
+  "ui",
+  "ut",
+  "va"
+)
+cuadro <- c(
+  "01 Oferta",
+  "01 Oferta",
+  "02 Utilización",
+  "02 Utilización",
+  "03 Valor Agregado"
+)
+hoja <- c("1", "2", "5", "6", "23")
+rango <- c(
+  "C14:DI194",
+  "C15:K195",
+  "C14:DI194",
+  "D16:L196",
+  "D20:DJ29"
+)
+excluir_columnas <- list(
+  integer(0), # mp
+  c(1, 3, 6, 9), # ot
+  integer(0), # ui
+  c(1, 8, 9), # ut
+  integer(0) # va
+)
+excluir_filas <- list(
+  integer(0), # mp
+  integer(0), # ot
+  integer(0), # ui
+  integer(0), # ut
+  c(2, 3, 5, 6, 8, 9) # va
+)
 
-# Oferta total
+# Se refiere al número de elemento de
+# cualquiera de las listas arriba
+i <- 1 # Para nuestro bucle "a mano"
+
+# Información general de la hoja
 info <- read_excel(
   archivo,
-  range = paste0("'", pes[1], "'!B4:B6"),
+  range = sprintf("'%s'!B4:B6", hoja[i]),
   col_names = FALSE,
   col_types = "text"
 )
 
+anio <- as.integer((str_extract(info[3, ], "\\d{4}")))
+unidad <- info[3, ]
 
+# Importar el cuerpo de datos
+datos1 <- read_excel(
+  archivo,
+  range = sprintf("'%s'!%s", hoja[i], rango[i]),
+  col_names = FALSE,
+  col_types = "numeric"
+)
+
+# Crear códigos de columna y fila estables
+n_filas <- nrow(datos1)
+n_columnas <- ncol(datos1)
+cod_filas <- sprintf("%s_f%03d", cuadrante[i], seq_len(n_filas))
+cod_columnas <- sprintf("%s_c%03d", cuadrante[i], seq_len(n_columnas))
+
+# Reemplazar las celdas vacías con ceros
+datos2 <- datos1 |>
+  mutate(across(everything(), ~ replace_na(.x, 0))) |>
+  setNames(cod_columnas) |>
+  mutate(Filas = cod_filas, .before = 1)
+
+# Deshacernos de filas y columnas redundantes o vacías
+datos3 <- datos2 |>
+  filter(
+    !Filas %in% cod_filas[excluir_filas[[i]]]
+  ) |>
+  select(
+    -cod_columnas[excluir_columnas[[i]]]
+  )
+
+# Alargar Y agregar columnas informativas
+mp <- datos3 |> # matriz de producción
+  pivot_longer(
+    cols = -Filas,
+    names_to = "Columnas",
+    values_to = "Valor"
+  ) |>
+  transmute(
+    `Año` = anio,
+    Cuadro = cuadro[i],
+    Cuadrante = cuadrante[i],
+    Unidades = str_extract(unidad, "(?<=\\().*?(?= de \\d{4}\\))"),
+    Precios = "corrientes",
+    Filas,
+    Columnas,
+    Valor
+  )
+
+# Repetir para el segundo cuadrante (ot)
+# ...
