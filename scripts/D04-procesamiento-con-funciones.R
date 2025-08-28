@@ -99,16 +99,15 @@ cou_2022 <- left_join(cou_2022, clasificacionColumnas, by = "Columnas")
 cou_2022 <- left_join(cou_2022, clasificacionFilas, by = "Filas")
 
 # Y lo exportamos a Excel
-write.xlsx(
-  scn_chl,
-  "salidas/CHL_SCN_BD_2022.xlsx",
-  sheetName = "CHL_SCN_BD",
-  rowNames = FALSE,
-  colnames = FALSE,
-  overwrite = TRUE,
-  asTable = FALSE
-)
-
+# write.xlsx(
+#   cou_2022,
+#   "salidas/CHL_SCN_BD_2022.xlsx",
+#   sheetName = "CHL_SCN_BD",
+#   rowNames = FALSE,
+#   colnames = FALSE,
+#   overwrite = TRUE,
+#   asTable = FALSE
+# )
 
 # Podemos usar el mismo procedimiento
 # para crear una función para procesar
@@ -153,12 +152,12 @@ scn_chl <- left_join(scn_chl, clasificacionColumnas, by = "Columnas")
 scn_chl <- left_join(scn_chl, clasificacionFilas, by = "Filas")
 
 # Y lo exportamos a Excel
-write.xlsx(
-  scn_chl,
-  "salidas/CHL_SCN_BD.xlsx",
-  sheetName = "CHL_SCN_BD",
-  rowNames = FALSE,
-  colnames = FALSE,
-  overwrite = TRUE,
-  asTable = FALSE
-)
+# write.xlsx(
+#   scn_chl,
+#   "salidas/CHL_SCN_BD.xlsx",
+#   sheetName = "CHL_SCN_BD",
+#   rowNames = FALSE,
+#   colnames = FALSE,
+#   overwrite = TRUE,
+#   asTable = FALSE
+# )
