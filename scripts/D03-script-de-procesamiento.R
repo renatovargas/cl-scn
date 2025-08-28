@@ -40,18 +40,18 @@ cuadro <- c(
 )
 hoja <- c("1", "2", "5", "6", "23")
 rango <- c(
-  "C14:DI194",
+  "C14:DJ194",
   "C15:K195",
-  "C14:DI194",
+  "C14:DJ194",
   "D16:L196",
-  "D20:DJ29"
+  "D20:DK29"
 )
 excluir_columnas <- list(
-  integer(0), # mp
+  c(112), # mp
   c(1, 3, 6, 9), # ot
-  integer(0), # ui
+  c(112), # ui
   c(1, 8, 9), # ut
-  integer(0) # va
+  c(112) # va
 )
 excluir_filas <- list(
   integer(0), # mp
@@ -65,6 +65,8 @@ excluir_filas <- list(
 # cualquiera de las listas arriba
 i <- 1 # Para nuestro bucle "a mano"
 
+
+# Cuadrante Matriz de Producción (mp)
 # Información general de la hoja
 info <- read_excel(
   archivo,
@@ -112,15 +114,16 @@ mp <- datos3 |> # matriz de producción
     names_to = "Columnas",
     values_to = "Valor"
   ) |>
-  transmute(
+  mutate(
+    Filas,
+    Columnas,
     `Año` = anio,
     Cuadro = cuadro[i],
     Cuadrante = cuadrante[i],
     Unidades = str_extract(unidad, "(?<=\\().*?(?= de \\d{4}\\))"),
     Precios = "corrientes",
-    Filas,
-    Columnas,
-    Valor
+    Valor,
+    .keep = "none" # Lo mismo que si usamos transmute.
   )
 
 # Repetir para el segundo cuadrante (ot)

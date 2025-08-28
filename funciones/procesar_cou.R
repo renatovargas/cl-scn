@@ -22,18 +22,18 @@ procesar_cou <- function(archivo) {
     ),
     hoja = c("1", "2", "5", "6", "23"),
     rango = c(
-      "C14:DI194",
+      "C14:DJ194",
       "C15:K195",
-      "C14:DI194",
+      "C14:DJ194",
       "D16:L196",
-      "D20:DJ29"
+      "D20:DK29"
     ),
     excluir_columnas = I(list(
-      integer(0), # mp
+      c(112), # mp
       c(1, 3, 6, 9), # ot
-      integer(0), # ui
+      c(112), # ui
       c(1, 8, 9), # ut
-      integer(0) # va
+      c(112) # va
     )),
     excluir_filas = I(list(
       integer(0), # mp

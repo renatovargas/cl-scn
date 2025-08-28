@@ -63,13 +63,13 @@ procesar_cuadrante <- function(
       values_to = "Valor"
     ) |>
     dplyr::transmute(
+      Filas,
+      Columnas,
       `Año` = anio,
       Cuadro = cuadro,
       Cuadrante = cuadrante,
       Unidades = stringr::str_extract(unidad, "(?<=\\().*?(?= de \\d{4}\\))"),
       Precios = "corrientes",
-      Filas,
-      Columnas,
       Valor
     )
   out
