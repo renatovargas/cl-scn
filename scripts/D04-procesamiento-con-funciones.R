@@ -18,7 +18,6 @@ archivo <- "datos/cou/COU_2022_PRECIOSCORRIENTES_111x181.xlsx"
 
 # Funcion para procesar cuadrantes
 source("funciones/procesar_cuadrante.R")
-source("funciones/procesar_cou.R")
 
 # Información general necesaria
 
@@ -62,6 +61,7 @@ config <- data.frame(
 )
 
 # Ahora usamos nuestra función para procesar todos los cuadrantes
+# de manera iterativa
 
 cuadrantes <- lapply(seq_len(nrow(config)), function(i) {
   procesar_cuadrante(
@@ -82,12 +82,47 @@ cuadrantes
 
 cou_2022 <- bind_rows(cuadrantes)
 
+#Le damos significado a las filas y columnas
+clasificacionColumnas <- read_xlsx(
+  "datos/CHL_Equivalencias.xlsx",
+  sheet = "Columnas",
+  col_names = TRUE,
+)
+clasificacionFilas <- read_xlsx(
+  "datos/CHL_Equivalencias.xlsx",
+  sheet = "Filas",
+  col_names = TRUE,
+)
+
+# Hacemos una unión
+cou_2022 <- left_join(cou_2022, clasificacionColumnas, by = "Columnas")
+cou_2022 <- left_join(cou_2022, clasificacionFilas, by = "Filas")
+
+# Y lo exportamos a Excel
+write.xlsx(
+  scn_chl,
+  "salidas/CHL_SCN_BD_2022.xlsx",
+  sheetName = "CHL_SCN_BD",
+  rowNames = FALSE,
+  colnames = FALSE,
+  overwrite = TRUE,
+  asTable = FALSE
+)
+
 
 # Podemos usar el mismo procedimiento
 # para crear una función para procesar
 # todo el COU de un archivo
 
+# Importamos nuestra función
+source("funciones/procesar_cou.R")
+
 test <- procesar_cou("datos/cou/COU_2022_PRECIOSCORRIENTES_111x181.xlsx")
+
+# ...y aplicamos los siguientes pasos
+
+# Como funciona, por qué no aplicamos los pasos a todos nuestros cous
+# en una sola partida.
 
 # Rutas de todos los archivos de Excel
 archivos <- list.files(
@@ -100,7 +135,6 @@ archivos <- list.files(
 cous <- lapply(archivos, procesar_cou)
 
 scn_chl <- dplyr::bind_rows(cous)
-
 
 #Le damos significado a las filas y columnas
 clasificacionColumnas <- read_xlsx(
@@ -117,7 +151,6 @@ clasificacionFilas <- read_xlsx(
 # Hacemos una unión
 scn_chl <- left_join(scn_chl, clasificacionColumnas, by = "Columnas")
 scn_chl <- left_join(scn_chl, clasificacionFilas, by = "Filas")
-
 
 # Y lo exportamos a Excel
 write.xlsx(
