@@ -100,3 +100,32 @@ archivos <- list.files(
 cous <- lapply(archivos, procesar_cou)
 
 scn_chl <- dplyr::bind_rows(cous)
+
+
+#Le damos significado a las filas y columnas
+clasificacionColumnas <- read_xlsx(
+  "datos/CHL_Equivalencias.xlsx",
+  sheet = "Columnas",
+  col_names = TRUE,
+)
+clasificacionFilas <- read_xlsx(
+  "datos/CHL_Equivalencias.xlsx",
+  sheet = "Filas",
+  col_names = TRUE,
+)
+
+# Hacemos una unión
+scn_chl <- left_join(scn_chl, clasificacionColumnas, by = "Columnas")
+scn_chl <- left_join(scn_chl, clasificacionFilas, by = "Filas")
+
+
+# Y lo exportamos a Excel
+write.xlsx(
+  scn_chl,
+  "salidas/CHL_SCN_BD.xlsx",
+  sheetName = "CHL_SCN_BD",
+  rowNames = FALSE,
+  colnames = FALSE,
+  overwrite = TRUE,
+  asTable = FALSE
+)
