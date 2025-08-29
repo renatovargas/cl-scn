@@ -1,15 +1,36 @@
 ---
 title: "Introducción a la Contabilidad Satélite de Bioeconomía"
-author: "Renato Vargas"
+author: "Renato Vargas (Consultor CEPAL), Andrés Mondaini (CEPAL),  Adrián Rodríguez (CEPAL)"
 format: 
   revealjs:
     theme: serif
-    footer: "Introducción a la Contabilidad Satélite de Bioeconomía."
+    footer: "Introducción a la Contabilidad Satélite de Bioeconomía"
 ---
+
+## Los productos bioeconómicos representan en promedio en Latinoamérica {.smaller}
+
+::::::: columns
+:::: {.column width="50%"}
+::: incremental
+-   [17.5%]{style="color:purple;"} de la producción a precios básicos.
+-   [12.5%]{style="color:purple;"} de las importaciones.
+-   [24.5%]{style="color:purple;"} de los impuestos sobre los productos.
+:::
+::::
+
+:::: {.column width="50%"}
+::: incremental
+-   [8.6%]{style="color:purple;"} de los insumos de todas las industrias.
+-   [27.9%]{style="color:purple;"} de las exportaciones.
+-   [25.0%]{style="color:purple;"} del consumo final.
+-   [3.7%]{style="color:purple;"} de la formación bruta de capital.
+:::
+::::
+:::::::
 
 # Definiciones
 
-## Definición de Bioeconomía {.smaller}
+## Definiciones de Bioeconomía {.smaller}
 
 :::::: columns
 ::: {.column width="30%"}
@@ -24,6 +45,26 @@ format:
 :::
 ::::
 ::::::
+
+## Definiciones de Bioeconomía {.smaller}
+
+::::::: columns
+::: {.column width="25%"}
+![](images/paste-1.png)
+:::
+
+::: {.column width="25%"}
+![](images/paste-1.png)
+:::
+
+:::: {.column width="50%"}
+"La bioeconomía es la producción de bienes y servicios que se basa en el uso sostenible de los recursos biológicos y sus derivados obtenidos a partir de procesos productivos, para promover la creación de empleo y contribuir a la disminución de la pobreza."
+
+::: {style="text-align: right"}
+---Libro Blanco de la Bioeconomía Sustentable de Ecuador.
+:::
+::::
+:::::::
 
 ## ¿Qué debe entenderse por bioeconomía? {.smaller}
 
@@ -46,8 +87,60 @@ format:
 ::::
 :::::::
 
-## {background-image="images/paste-2.png" }
+##  {background-image="images/paste-2.png"}
 
 ::: {style="color: white"}
 ¿Satélite de qué?
 :::
+
+# Cuentas Nacionales y Cuentas Satélite
+
+## Cuentas Nacionales y Cuentas Satélite {.smaller}
+
+::::::: columns
+:::: {.column width="50%"}
+::: incremental
+[**Sistema de Cuentas Nacionales**]{style="color:teal;"}
+
+-   Desempeño económico
+-   La producción.
+-   El consumo.
+-   La distribución del ingreso.
+-   El beneficio anual de las actividades económicas.
+-   Tiene reglas estrictas contables, definiciones y clasificaciones.
+:::
+::::
+
+:::: {.column width="50%"}
+::: incremental
+[**Cuentas Satélite**]{style="color:teal;"}
+
+-   Extienden el alcance del Sistema de Cuentas Nacionales.
+-   Hacen un acercamiento y aislan un tema en particular para revelar su valor.
+-   Usan información complementaria pero compatible con el SCN (física por ejemplo).
+-   En algunos casos, modifican definiciones.
+:::
+::::
+:::::::
+
+## Cuadro de oferta
+
+![](images/paste-4.png)
+
+## Cuadro de utilización
+
+![](images/paste-5.png)
+
+## Valor Agregado y Cálculo PIB (método de la producción)
+
+![](images/paste-6.png)
+
+# Metodología y abordaje
+
+## Determinación del tipo de extension del Sistema de Cuentas Nacionales
+
+![](images/paste-11.png)
+
+## Abordaje de Cuentas de Sectores Clave
+
+![](images/paste-12.png)
