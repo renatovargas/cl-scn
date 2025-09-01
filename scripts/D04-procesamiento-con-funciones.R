@@ -84,12 +84,12 @@ cou_2022 <- bind_rows(cuadrantes)
 
 #Le damos significado a las filas y columnas
 clasificacionColumnas <- read_xlsx(
-  "datos/CHL_Equivalencias.xlsx",
+  "datos/equivalencias/CHL_Equivalencias.xlsx",
   sheet = "Columnas",
   col_names = TRUE,
 )
 clasificacionFilas <- read_xlsx(
-  "datos/CHL_Equivalencias.xlsx",
+  "datos/equivalencias/CHL_Equivalencias.xlsx",
   sheet = "Filas",
   col_names = TRUE,
 )
@@ -137,12 +137,12 @@ scn_chl <- dplyr::bind_rows(cous)
 
 #Le damos significado a las filas y columnas
 clasificacionColumnas <- read_xlsx(
-  "datos/CHL_Equivalencias.xlsx",
+  "datos/equivalencias/CHL_Equivalencias.xlsx",
   sheet = "Columnas",
   col_names = TRUE,
 )
 clasificacionFilas <- read_xlsx(
-  "datos/CHL_Equivalencias.xlsx",
+  "datos/equivalencias/CHL_Equivalencias.xlsx",
   sheet = "Filas",
   col_names = TRUE,
 )
@@ -151,13 +151,25 @@ clasificacionFilas <- read_xlsx(
 scn_chl <- left_join(scn_chl, clasificacionColumnas, by = "Columnas")
 scn_chl <- left_join(scn_chl, clasificacionFilas, by = "Filas")
 
+
+# Un ejemplo del año 2022
+scn_chl_2022 <- scn_chl |>
+  filter(`Año` == 2022) |>
+  mutate(across(everything(), ~ ifelse(is.na(.x), "-", .x)))
+
 # Y lo exportamos a Excel
-# write.xlsx(
-#   scn_chl,
-#   "salidas/CHL_SCN_BD.xlsx",
-#   sheetName = "CHL_SCN_BD",
-#   rowNames = FALSE,
-#   colnames = FALSE,
-#   overwrite = TRUE,
-#   asTable = FALSE
-# )
+write.xlsx(
+  scn_chl_2022,
+  "salidas/CHL_SCN_BD_2022.xlsx",
+  sheetName = "CHL_SCN_BD",
+  rowNames = FALSE,
+  colnames = FALSE,
+  overwrite = TRUE,
+  asTable = FALSE,
+  na.string = "-"
+)
+
+
+# Toda la base de datos en RDS
+
+saveRDS(scn_chl, file = "salidas/chl_scn_bd.rds")

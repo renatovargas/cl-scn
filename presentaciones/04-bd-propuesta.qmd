@@ -1,0 +1,11 @@
+---
+title: "Familiarización con la base de datos propuesta"
+subtitle: "Ejercicios Prácticos"
+author: "Renato Vargas (Consultor CEPAL)"
+format: 
+  revealjs:
+    theme: serif
+    footer: "Base de datos propuesta"
+---
+
+https://tinyurl.com/chlcou2025 
