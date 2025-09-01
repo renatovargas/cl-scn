@@ -88,6 +88,11 @@ Naciones Unidas et al. (2008). Sistema de Cuentas Nacionales 2008, Nueva York.
 ## {.center}
 
 ::: {style="text-align: center"}
+
+Descargar carpeta completa:
+
+**https://tinyurl.com/chlcou2025**
+
 Abrir archivo ubicado en:
 
 **"datos/ejemplos/COU_2022_De_Referencia.xlsx"**

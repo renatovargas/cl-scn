@@ -8,4 +8,32 @@ format:
     footer: "Base de datos propuesta"
 ---
 
-https://tinyurl.com/chlcou2025 
+## La Base de Datos Resultante
+
+- Archivo plano estructurado al cual se han añadido campos descriptivos y de resumen.
+- Contiene un solo campo con todos los valores. 
+- Se compone de tres grupos de campos descriptivos:
+  - Transacciones.
+  - Actividades.
+  - Productos.
+
+
+## {.center}
+
+::: {style="text-align: center"}
+Nuestra carpeta compartida:
+
+**https://tinyurl.com/chlcou2025**
+
+Abrimos el archivo:
+
+**datos/ejemplos/CHL_SCN_BD_2022_TD.xlsx**
+:::
+
+## {.center}
+
+::: {style="text-align: center"}
+Gracias
+
+renatovargas.com
+:::

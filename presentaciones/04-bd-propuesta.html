@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html lang="en"><head>
-<script src="03-conversion-a-formato-plano_files/libs/clipboard/clipboard.min.js"></script>
-<script src="03-conversion-a-formato-plano_files/libs/quarto-html/tabby.min.js"></script>
-<script src="03-conversion-a-formato-plano_files/libs/quarto-html/popper.min.js"></script>
-<script src="03-conversion-a-formato-plano_files/libs/quarto-html/tippy.umd.min.js"></script>
-<link href="03-conversion-a-formato-plano_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="03-conversion-a-formato-plano_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="03-conversion-a-formato-plano_files/libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+<script src="04-bd-propuesta_files/libs/clipboard/clipboard.min.js"></script>
+<script src="04-bd-propuesta_files/libs/quarto-html/tabby.min.js"></script>
+<script src="04-bd-propuesta_files/libs/quarto-html/popper.min.js"></script>
+<script src="04-bd-propuesta_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="04-bd-propuesta_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="04-bd-propuesta_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="04-bd-propuesta_files/libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.7.32">
 
   <meta name="author" content="Renato Vargas (Consultor CEPAL)">
-  <title>Procedimiento de conversión de cuadros</title>
+  <title>Familiarización con la base de datos propuesta</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-  <link rel="stylesheet" href="03-conversion-a-formato-plano_files/libs/revealjs/dist/reset.css">
-  <link rel="stylesheet" href="03-conversion-a-formato-plano_files/libs/revealjs/dist/reveal.css">
+  <link rel="stylesheet" href="04-bd-propuesta_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="04-bd-propuesta_files/libs/revealjs/dist/reveal.css">
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -29,11 +29,11 @@
       vertical-align: middle;
     }
   </style>
-  <link rel="stylesheet" href="03-conversion-a-formato-plano_files/libs/revealjs/dist/theme/quarto-816793a8a4a837d14f6ea458e2f1c5cb.css">
-  <link href="03-conversion-a-formato-plano_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
-  <link href="03-conversion-a-formato-plano_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
-  <link href="03-conversion-a-formato-plano_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
-  <link href="03-conversion-a-formato-plano_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <link rel="stylesheet" href="04-bd-propuesta_files/libs/revealjs/dist/theme/quarto-816793a8a4a837d14f6ea458e2f1c5cb.css">
+  <link href="04-bd-propuesta_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="04-bd-propuesta_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="04-bd-propuesta_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="04-bd-propuesta_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
   <style type="text/css">
     .reveal div.sourceCode {
       margin: 0;
@@ -127,8 +127,8 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Procedimiento de conversión de cuadros</h1>
-  <p class="subtitle">De cuadros de entrada múltiple a archivos de formato plano</p>
+  <h1 class="title">Familiarización con la base de datos propuesta</h1>
+  <p class="subtitle">Ejercicios Prácticos</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -139,84 +139,28 @@ Renato Vargas (Consultor CEPAL)
 </div>
 
 </section>
-<section id="datos" class="slide level2 smaller">
-<h2>Datos</h2>
-<div class="columns">
-<div class="column" style="width:30%;">
-<p><img data-src="images/paste-48.png"></p>
-</div><div class="column" style="width:70%;">
-<p>“Una vez que has importado los datos, es una buena idea <strong>ordenarlos</strong>. <strong>Ordenar</strong> los datos significa guardarlos de una manera consistente que haga coincidir la semántica del set de datos con la manera en que está guardado. En definitiva, <strong>cuando tus datos están ordenados, cada columna es una variable y cada fila una observación</strong>. Tener datos ordenados es importante porque si su estructura es consistente, puedes enfocar tus esfuerzos en las preguntas sobre los datos.” <br></p>
-<div style="text-align: right">
-<p><em>“R Para Ciencia de Datos (2a edición)”. Hadley Wickham, Mine Cetinkaya-Rundel (Author), Garrett Grolemund.</em></p>
-</div>
-</div></div>
-<div style="text-align: right">
-
-</div>
+<section id="la-base-de-datos-resultante" class="slide level2">
+<h2>La Base de Datos Resultante</h2>
+<ul>
+<li>Archivo plano estructurado al cual se han añadido campos descriptivos y de resumen.</li>
+<li>Contiene un solo campo con todos los valores.</li>
+<li>Se compone de tres grupos de campos descriptivos:
+<ul>
+<li>Transacciones.</li>
+<li>Actividades.</li>
+<li>Productos.</li>
+</ul></li>
+</ul>
 </section>
-<section id="estado-inicial" class="slide level2">
-<h2>Estado inicial</h2>
-
-<img data-src="images/paste-52.png" class="r-stretch"></section>
-<section id="paso-1" class="slide level2">
-<h2>Paso 1</h2>
-
-<img data-src="images/paste-53.png" class="r-stretch"></section>
-<section id="paso-2" class="slide level2">
-<h2>Paso 2</h2>
-
-<img data-src="images/paste-57.png" class="r-stretch"></section>
-<section id="paso-3" class="slide level2">
-<h2>Paso 3</h2>
-
-<img data-src="images/paste-55.png" class="r-stretch"></section>
 <section id="section" class="slide level2 center">
 <h2></h2>
 <div style="text-align: center">
-<p>Abrir archivo ubicado en:</p>
-<p><strong>“datos/ejemplos”</strong></p>
+<p>Nuestra carpeta compartida:</p>
+<p><strong>https://tinyurl.com/chlcou2025</strong></p>
+<p>Abrimos el archivo:</p>
+<p><strong>datos/ejemplos/CHL_SCN_BD_2022_TD.xlsx</strong></p>
 </div>
 </section>
-<section id="activar-el-asistente-de-excel" class="slide level2">
-<h2>Activar el asistente de Excel</h2>
-
-<img data-src="images/paste-58.png" class="r-stretch"></section>
-<section id="todos-los-comandos" class="slide level2">
-<h2>Todos los comandos</h2>
-
-<img data-src="images/paste-59.png" class="r-stretch"></section>
-<section id="nuevo-grupo" class="slide level2 center">
-<h2>Nuevo Grupo</h2>
-
-<img data-src="images/paste-60.png" class="r-stretch"></section>
-<section id="agregar-asistente-para-tablas-y-gráficos" class="slide level2">
-<h2>Agregar “Asistente para tablas y gráficos”</h2>
-
-<img data-src="images/paste-61.png" class="r-stretch"></section>
-<section id="rangos-de-consolidación-múltiple" class="slide level2">
-<h2>Rangos de consolidación múltiple</h2>
-
-<img data-src="images/paste-62.png" class="r-stretch"></section>
-<section id="campos-de-página-personalizados" class="slide level2">
-<h2>Campos de página personalizados</h2>
-
-<img data-src="images/paste-63.png" class="r-stretch"></section>
-<section id="seleccionar-los-datos" class="slide level2">
-<h2>Seleccionar los datos</h2>
-
-<img data-src="images/paste-64.png" class="r-stretch"></section>
-<section id="en-dónde" class="slide level2">
-<h2>¿En dónde?</h2>
-
-<img data-src="images/paste-65.png" class="r-stretch"></section>
-<section id="eliminar-filas-y-columnas" class="slide level2">
-<h2>Eliminar filas y columnas</h2>
-
-<img data-src="images/paste-66.png" class="r-stretch"></section>
-<section id="doble-click-en-suma-de-valor" class="slide level2">
-<h2>Doble click en Suma de Valor</h2>
-
-<img data-src="images/paste-67.png" class="r-stretch"></section>
 <section id="section-1" class="slide level2 center">
 <h2></h2>
 <div style="text-align: center">
@@ -228,24 +172,24 @@ Renato Vargas (Consultor CEPAL)
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
-<p>Procedimiento de conversión de cuadros</p>
+<p>Base de datos propuesta</p>
 </div>
 </div></div>
 
   <script>window.backupDefine = window.define; window.define = undefined;</script>
-  <script src="03-conversion-a-formato-plano_files/libs/revealjs/dist/reveal.js"></script>
+  <script src="04-bd-propuesta_files/libs/revealjs/dist/reveal.js"></script>
   <!-- reveal.js plugins -->
-  <script src="03-conversion-a-formato-plano_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
-  <script src="03-conversion-a-formato-plano_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
-  <script src="03-conversion-a-formato-plano_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
-  <script src="03-conversion-a-formato-plano_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
-  <script src="03-conversion-a-formato-plano_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  <script src="04-bd-propuesta_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="04-bd-propuesta_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="04-bd-propuesta_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="04-bd-propuesta_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="04-bd-propuesta_files/libs/revealjs/plugin/quarto-support/support.js"></script>
   
 
-  <script src="03-conversion-a-formato-plano_files/libs/revealjs/plugin/notes/notes.js"></script>
-  <script src="03-conversion-a-formato-plano_files/libs/revealjs/plugin/search/search.js"></script>
-  <script src="03-conversion-a-formato-plano_files/libs/revealjs/plugin/zoom/zoom.js"></script>
-  <script src="03-conversion-a-formato-plano_files/libs/revealjs/plugin/math/math.js"></script>
+  <script src="04-bd-propuesta_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="04-bd-propuesta_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="04-bd-propuesta_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="04-bd-propuesta_files/libs/revealjs/plugin/math/math.js"></script>
   <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
 
   <script>
