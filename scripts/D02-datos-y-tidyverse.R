@@ -25,8 +25,8 @@ equivalencias_empleo_chl <- read_excel(
 # SPSS o STATA
 library(haven)
 
-# Datos de Perú
-epen2024 <- read_sav("datos/intro/EPEN 2022 BD_Publicación Dpto.SAV")
+# # Datos de Perú
+# epen2024 <- read_sav("datos/intro/EPEN 2022 BD_Publicación Dpto.SAV")
 
 # Datos Geográficos (no llamamos las librerías)
 
@@ -85,40 +85,39 @@ empleo_xlsx <- read_excel(
     region_name = `Región`
   )
 
-# Otro ejemplo con Perú
-equivalencia <- read_excel(
-  "datos/intro/PER_epem_equivalencia.xlsx",
-  col_types = c("numeric", "text", "text", "text")
-)
+# # Otro ejemplo con Perú
+# equivalencia <- read_excel(
+#   "datos/intro/PER_epem_equivalencia.xlsx",
+#   col_types = c("numeric", "text", "text", "text")
+# )
 
-empleo_per <- epen2024 |>
-  left_join(
-    equivalencia,
-    join_by(C309_COD)
-  ) |>
-  filter(
-    C310 %in% c(1:7),
-    !is.na(C310),
-    !C309_COD %in% c("9700", "9900")
-  ) |>
-  group_by(CCDD, as_factor(CCDD), io_code, io_name) |>
-  summarize(
-    total = sum(FAC300_ANUAL)
-  ) |>
-  ungroup() |>
-  pivot_wider(
-    id_cols = c(CCDD, `as_factor(CCDD)`),
-    names_from = c(io_code, io_name),
-    values_from = total,
-    names_sep = "_",
-    names_sort = T,
-    values_fill = 0
-  ) |>
-  rename(
-    region_code = CCDD,
-    region_name = `as_factor(CCDD)`
-  )
-
+# empleo_per <- epen2024 |>
+#   left_join(
+#     equivalencia,
+#     join_by(C309_COD)
+#   ) |>
+#   filter(
+#     C310 %in% c(1:7),
+#     !is.na(C310),
+#     !C309_COD %in% c("9700", "9900")
+#   ) |>
+#   group_by(CCDD, as_factor(CCDD), io_code, io_name) |>
+#   summarize(
+#     total = sum(FAC300_ANUAL)
+#   ) |>
+#   ungroup() |>
+#   pivot_wider(
+#     id_cols = c(CCDD, `as_factor(CCDD)`),
+#     names_from = c(io_code, io_name),
+#     values_from = total,
+#     names_sep = "_",
+#     names_sort = T,
+#     values_fill = 0
+#   ) |>
+#   rename(
+#     region_code = CCDD,
+#     region_name = `as_factor(CCDD)`
+#   )
 
 # Guardar a Excel
 library(openxlsx)
