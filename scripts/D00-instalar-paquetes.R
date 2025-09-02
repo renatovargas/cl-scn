@@ -6,7 +6,9 @@ install.packages(
     "readxl",
     "openxlsx",
     "gt",
-    "pivottabler"
+    "pivottabler",
+    "haven",
+    "ggplot2"
   )
 )
 

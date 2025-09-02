@@ -1,3 +1,15 @@
+# Las funciones de R
+## funcion( objeto, parametro1 = "", parametro2 = 2, parametro3 = F)
+
+# Las funciones embebidas
+## funcion1( funcion2(objeto, funcion2parametro1 = ...), funcion1parametro1f1 = ...)
+
+# Limpiar el área de trabajo
+rm(list = ls())
+
+## El directorio de trabajo
+getwd()
+
 ## Asignar
 
 # Un valor
@@ -59,7 +71,7 @@ extraccion
 extraccion * 2
 
 
-## Concatenación
+## Concatenación de cadenas de caracteres
 paste(c, "Bello")
 
 ## Índices
