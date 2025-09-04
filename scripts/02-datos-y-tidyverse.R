@@ -10,7 +10,8 @@ rm(list = ls())
 empleo_csv <- read.csv(
   "datos/intro/empleo_chl.csv",
   sep = ";",
-  dec = ","
+  dec = ",",
+  encoding = "UTF-8"
 )
 
 # Excel
@@ -23,7 +24,7 @@ equivalencias_empleo_chl <- read_excel(
 )
 
 # SPSS o STATA
-library(haven)
+# library(haven)
 
 # # Datos de Perú
 # epen2024 <- read_sav("datos/intro/EPEN 2022 BD_Publicación Dpto.SAV")
@@ -42,6 +43,7 @@ library(tidyverse)
 # Ejemplo de un verbo (Seleccionar)
 equivalencias_empleo_chl <- equivalencias_empleo_chl |>
   select(!`Ocupados (miles)`)
+
 
 # El "tubo" |>
 # También se puede %>%
@@ -82,7 +84,7 @@ empleo_xlsx <- read_excel(
     values_fill = 0
   ) |>
   rename(
-    region_name = `Región`
+    `Región de Chile` = `Región`
   )
 
 # # Otro ejemplo con Perú

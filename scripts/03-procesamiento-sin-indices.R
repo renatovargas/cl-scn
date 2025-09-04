@@ -15,7 +15,7 @@ rm(list = ls())
 archivo <- "datos/cou/COU_2022_PRECIOSCORRIENTES_111x181.xlsx"
 
 # Hojas del Excel
-hoja_todas <- excel_sheets(archivo)
+hojas_todas <- excel_sheets(archivo)
 
 # hoja de interés:
 # Matriz de producción (mp)
@@ -38,7 +38,7 @@ unidad <- "miles de millones de pesos"
 # Importar el cuerpo de datos
 datos1 <- read_excel(
   archivo,
-  range = "'1'!C14:DJ194",
+  range = paste0("'", hoja, "'!", rango),
   col_names = FALSE,
   col_types = "numeric"
 )

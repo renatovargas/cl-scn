@@ -19,6 +19,16 @@ archivo <- "datos/cou/COU_2022_PRECIOSCORRIENTES_111x181.xlsx"
 # Funcion para procesar cuadrantes
 source("funciones/procesar_cuadrante.R")
 
+test <- procesar_cuadrante(
+  "datos/cou/COU_2022_PRECIOSCORRIENTES_111x181.xlsx",
+  "ui",
+  "02 Utilización",
+  "5",
+  "C14:DI194",
+  integer(0),
+  integer(0)
+)
+
 # Información general necesaria
 
 config <- data.frame(
@@ -116,7 +126,7 @@ cou_2022 <- left_join(cou_2022, clasificacionFilas, by = "Filas")
 # Importamos nuestra función
 source("funciones/procesar_cou.R")
 
-test <- procesar_cou("datos/cou/COU_2022_PRECIOSCORRIENTES_111x181.xlsx")
+test2 <- procesar_cou("datos/cou/COU_2022_PRECIOSCORRIENTES_111x181.xlsx")
 
 # ...y aplicamos los siguientes pasos
 
@@ -154,8 +164,9 @@ scn_chl <- left_join(scn_chl, clasificacionFilas, by = "Filas")
 
 # Un ejemplo del año 2022
 scn_chl_2022 <- scn_chl |>
-  filter(`Año` == 2022) |>
-  mutate(across(everything(), ~ ifelse(is.na(.x), "-", .x)))
+  filter(`Año` == 2022)
+# |>
+#   mutate(across(everything(), ~ ifelse(is.na(.x), "-", .x)))
 
 # Y lo exportamos a Excel
 write.xlsx(
@@ -165,11 +176,19 @@ write.xlsx(
   rowNames = FALSE,
   colnames = FALSE,
   overwrite = TRUE,
-  asTable = FALSE,
-  na.string = "-"
+  asTable = FALSE
 )
 
-
+# Y lo exportamos a Excel
+write.xlsx(
+  scn_chl,
+  "salidas/CHL_SCN_BD.xlsx",
+  sheetName = "CHL_SCN_BD",
+  rowNames = FALSE,
+  colnames = FALSE,
+  overwrite = TRUE,
+  asTable = FALSE
+)
 # Toda la base de datos en RDS
 
 saveRDS(scn_chl, file = "salidas/chl_scn_bd.rds")

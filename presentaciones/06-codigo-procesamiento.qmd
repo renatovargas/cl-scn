@@ -1,0 +1,95 @@
+---
+title: "Código de Procesamiento"
+subtitle: "R y Positron"
+author: "Renato Vargas (Consultor CEPAL)"
+format: 
+  revealjs:
+    theme: serif
+    footer: "Código de Procesamiento"
+---
+
+## Importar los datos (cuadro entrada múltiple)
+
+```{.r code-line-numbers="|2|3|4-5"}
+datos1 <- read_excel(
+  archivo,
+  range = paste0(hoja, "!", rango),
+  col_names = FALSE,
+  col_types = "numeric"
+)
+```
+## Crear correlativos de fila y columna estables
+
+```{.r code-line-numbers="|1-2|3-7|4|5|6"}
+n_filas <- nrow(datos1)
+n_columnas <- ncol(datos1)
+cod_filas <- sprintf(
+  "%s_f%03d",
+  "mp",
+  seq_len(n_filas)
+)
+cod_columnas <- sprintf(
+  "%s_c%03d",
+  "mp",
+  seq_len(n_columnas)
+)
+```
+
+## Asegurar ceros y nombrar filas y columnas
+
+```{.r code-line-numbers="|1-7|8|9-13"}
+datos2 <- datos1 |>
+  mutate(
+    across(
+      everything(),
+      ~ replace_na(.x, 0)
+    )
+  ) |>
+  setNames(cod_columnas) |>
+  mutate(
+    Filas = cod_filas,
+    .before = 1
+  )
+```
+
+## Deshacernos de columnas y filas redundantes o vacías
+
+```{.r code-line-numbers="|2-4|5-7"}
+datos3 <- datos2 |>
+  filter(
+    !Filas %in% excluir_filas
+  ) |>
+  select(
+    -cod_columnas[excluir_columnas]
+  )
+```
+## Deshacernos de columnas y filas redundantes o vacías
+
+```{.r code-line-numbers="|2-6|7-17"}
+mp <- datos3 |> # matriz de producción
+  pivot_longer(
+    cols = -Filas,
+    names_to = "Columnas",
+    values_to = "Valor"
+  ) |>
+  mutate(
+    Filas,
+    Columnas,
+    `Año` = anio,
+    Cuadro = cuadro,
+    Cuadrante = cuadrante,
+    Unidades = unidad,
+    Precios = "corrientes",
+    Valor,
+    .keep = "none" # Lo mismo que si usamos transmute.
+  )
+```
+
+
+##  {.center}
+
+::: {style="text-align: center"}
+Gracias
+
+renatovargas.com
+:::

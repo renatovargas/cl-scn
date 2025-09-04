@@ -1,11 +1,12 @@
 # Las funciones de R
-## funcion( objeto, parametro1 = "", parametro2 = 2, parametro3 = F)
+## funcion( objeto, parametro1 = "", parametro2 = 23, parametro3 = TRUE)
 
 # Las funciones embebidas
 ## funcion1( funcion2(objeto, funcion2parametro1 = ...), funcion1parametro1f1 = ...)
 
 # Limpiar el área de trabajo
 rm(list = ls())
+
 
 ## El directorio de trabajo
 getwd()
@@ -51,13 +52,23 @@ caracteres
 
 # Una matriz
 
-d <- matrix(c(3, 4, 5, 7, 8, 9, 12, 34, 28), nrow = 3, ncol = 3, byrow = TRUE)
+d <- matrix(
+  c(3, 4, 5, 7, 8, 9, 12, 34, 28),
+  nrow = 3,
+  ncol = 3,
+  byrow = T
+)
 d
 
 
 # Un cuadro de datos
 
-e <- data.frame(x = 1, y = 1:10, caracteres = caracteres)
+e <- data.frame(
+  x = 1,
+  y = 1:10,
+  z = caracteres
+)
+
 e
 
 
@@ -72,18 +83,37 @@ extraccion * 2
 
 
 ## Concatenación de cadenas de caracteres
-paste(c, "Bello")
+paste(c, "Bello", sep = "+")
+
+paste0(c, "Bello")
 
 ## Índices
 
 # ..de Vectores
 a
+
+a[2]
+
 a[c(1, 3)]
 
 # ...de matrices o marcos de datos
+d[3, 2]
+
 d
-d[c(1, 3), 3]
+as.matrix(d[c(1, 3), 3])
 
 # Índices negativos
+a[-2]
+
 d
 d[-1, -3]
+
+
+# Funciones
+
+sumar_cosas <- function(cosa_uno, cosa_dos) {
+  resultado <- cosa_uno + cosa_dos
+  print(resultado)
+}
+
+salida <- sumar_cosas(3, 7)
