@@ -265,6 +265,8 @@ I10 <- diag(10)
 I10
 
 
+diag(ncol(M))
+
 # Podemos ahorrarnos un paso y obtener la matriz identidad de dimensiones
 # adecuadas de manera automágica:
 diag(dim(M)[2])

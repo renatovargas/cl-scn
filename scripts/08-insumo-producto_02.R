@@ -4,33 +4,31 @@
 
 # 1. El modelo básico
 
-
 #           Hacia   Sectores
 #                  Agr   Manuf  FinDem  Total Producto
 # Desde
 #   Agricultura    150     500     350          1000
 #   Manufacturas   200     100    1700          2000
-# 
+#
 # Pagos a factores 650    1400    1100          3150
-# Total insumos   1000    2000    3150          6150 
+# Total insumos   1000    2000    3150          6150
 
-
-# Coeficientes técnicos (la matriz A) 
+# Coeficientes técnicos (la matriz A)
 
 #           Hacia    Sectores
-#                   Agr   Manuf  
+#                   Agr   Manuf
 # Desde
 #   Agricultura    0.15    0.25
 #   Manufacturas   0.20    0.05
 
 # Primero creamos nuestro cuadro de flujos entre industrias
 
-Z <- matrix( c(150,500,200,100), nrow = 2, ncol = 2, byrow = TRUE)
+Z <- matrix(c(150, 500, 200, 100), nrow = 2, ncol = 2, byrow = TRUE)
 
 # Es importante identificar los sectores en nuestra matriz
 
 sectores <- c("Agricultura", "Manufacturas")
-colnames(Z) <- sectores 
+colnames(Z) <- sectores
 rownames(Z) <- sectores
 
 # Ingresamos nuestra demanda final (según el diagrama)
@@ -46,7 +44,7 @@ xhat <- diag(x)
 xhat
 
 #  Nuestra matriz de coeficientes técnicos.
-A <- Z %*% solve( xhat )
+A <- Z %*% solve(xhat)
 A
 
 # Ahora necesitamos conocer las dimensiones de A.
@@ -54,16 +52,16 @@ dim(A)
 
 # Para poder crear nuestra matriz identidad de tamaño apropiado
 
-I <- diag(   dim(A)[1]    )
+I <- diag(dim(A)[1])
 I
 
 I - A
 
 # Y así estimar nuestra matriz de Leontief
-L <- solve( I - A )
+L <- solve(I - A)
 L
 
-# Verificamos que nuestro modelo calcula x = Lf (¡Estamos calibrados!) 
+# Verificamos que nuestro modelo calcula x = Lf (¡Estamos calibrados!)
 L %*% f
 
 # ¿Ahora qué pasaría si cambiamos nuestra demanda final?
@@ -80,7 +78,7 @@ xnueva
 
 # De nuestra definición de coeficientes Z= A %*% xhat encontramos Znueva
 
-Znueva <- A %*% diag(xnueva)  # error
+Znueva <- A %*% diag(xnueva) # error
 
 # Nos da un error porque xnueva no es entendido como vector por R, es una
 # matriz y diag() funciona de manera distinta si se le pasa una matriz.
@@ -98,8 +96,8 @@ Znueva
 #                    Agr    Manuf  FinDem  Total Producto
 # Desde
 #  Agricultura    187.13   460.40     600       1247.52
-#  Manufacturas   249.51    92.08    1500       1841.58  
-# 
+#  Manufacturas   249.51    92.08    1500       1841.58
+#
 # Pago a factores 810.89  1289.11    1100       3200.00
 # Total insumos  1247.53  1841.58    3200       6289.10
 
@@ -125,21 +123,21 @@ deltaZ * tc
 
 # =============================================================================
 
-# 2. La extensión ambiental básica 
+# 2. La extensión ambiental básica
 
 # Otros impactos pueden ser obtenidos a través de coeficientes
 
 # Imaginemos que nuestro uso de agua está dado por
 eprima <- t(as.matrix(c(300, 500)))
 ind <- c("Agricultura", "Manufacturas")
-rownames(eprima) <- "Metros Cúbicos de Agua" # c("Agricultura", "Manufacturas")
+rownames(eprima) <- "Empleo (personas)" # c("Agricultura", "Manufacturas")
 colnames(eprima) <- ind
 eprima
 
 eprima <- as.vector(eprima)
 
 # En álgebra matricial hay que transponer eprima
-# y posmultiply it by a diagonal version of x
+# y posmultiplicarlo por su version de x
 epsilon <- t(as.matrix(eprima)) %*% solve(diag(x))
 
 # También se puede utilizar la regla de reciclaje para usar la división normal
@@ -151,7 +149,7 @@ epsilon
 # Y enueva su nuevo vector de impactos ambientales
 enueva <- diag(c(epsilon)) %*% L %*% fnueva
 rownames(enueva) <- ind # c("Agricultura", "Manufacturas")
-colnames(enueva) <- "Metros Cúbicos de Agua"
+colnames(enueva) <- "Empleo (personas)"
 
 # Y vemos nuestro resultado enueva
 enueva
@@ -168,13 +166,13 @@ deltae <- enueva - eprima
 
 # El multiplicador de producto para el sector j esta definido como
 # el valor de producción en todos los sectores de la economía que es
-# necesario para satisfacer una unidad monetaria de la demanda de los 
+# necesario para satisfacer una unidad monetaria de la demanda de los
 # productos de ese sector.
 
 # Multiplicadores simples
 
 # Para el multiplicador simple esta producción total se define como
-# la unidad monetaria adicional de la producción del sector j 
+# la unidad monetaria adicional de la producción del sector j
 # necesaria para satisfacer la demanda final adicional.
 # El multiplicador es la razón del cambio indirecto al cambio directo.
 
@@ -196,11 +194,11 @@ L
 # [2,]   0.2640264      1.122112
 
 # Primero veamos la demanda adicional solo para el primer sector
-deltaf1 <- c(1,0)
+deltaf1 <- c(1, 0)
 L %*% deltaf1
 
 # o el segundo sector
-deltaf2 <- c(0,1)
+deltaf2 <- c(0, 1)
 L %*% deltaf2
 
 # En el primer caso, vemos una producción adicional de USD 1.254
@@ -223,8 +221,9 @@ help("rep")
 i <- rep(1, dim(L)[1])
 
 # Nuestros multiplicadores son:
-mo <- i%*%L
+mo <- i %*% L
 
 # Estos son muy útiles porque nos dicen en qué sectores nuestras inversiones
 # tienen mayores impactos en la economía.
 
+eprima %*% Lf
