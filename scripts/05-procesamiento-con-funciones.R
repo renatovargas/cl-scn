@@ -7,6 +7,7 @@ library(dplyr) # Manipulación de datos
 library(tidyr) # Limpieza de datos
 library(stringr) # Manipulación de textos
 library(openxlsx) # Exportación a Excel
+library(arrow)
 
 # Limpiar el área de trabajo
 rm(list = ls())
@@ -165,7 +166,7 @@ scn_chl <- left_join(scn_chl, clasificacionFilas, by = "Filas")
 # Un ejemplo del año 2022
 scn_chl_2022 <- scn_chl |>
   filter(`Año` == 2022)
-# |>
+# |> 
 #   mutate(across(everything(), ~ ifelse(is.na(.x), "-", .x)))
 
 # Y lo exportamos a Excel
@@ -189,6 +190,12 @@ write.xlsx(
   overwrite = TRUE,
   asTable = FALSE
 )
-# Toda la base de datos en RDS
 
+# Toda la base de datos en RDS
+# Formato binario de R que ocupa muy poco espacio en disco
 saveRDS(scn_chl, file = "salidas/chl_scn_bd.rds")
+
+# Toda la base de datos en Parquet
+# Formato de Apache Arrow de muy poco espacio en disco
+# pero más fácil de compartir con otros sistemas.
+write_parquet(scn_chl, "salidas/schl_scn_bd.parquet")
